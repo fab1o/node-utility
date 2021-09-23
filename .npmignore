@@ -10,6 +10,7 @@
 .npmignore
 .prettierignore
 .prettierrc.js
+.esdoc.json
 release.md
 
 *.log
@@ -21,5 +22,3 @@ test
 
 doc
 docs
-esdoc-style.css
-esdoc.json
