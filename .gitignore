@@ -1,0 +1,61 @@
+######################
+# OS generated files #
+######################
+
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+
+##############
+# Node Files #
+##############
+
+node_modules
+npm-debug.log
+
+#############
+# Dot Files #
+#############
+
+*.swp
+*.tmp
+*.log
+*.todo
+*.idea
+.vscode/
+!.vscode/launch.json
+!.vscode/jsSdkSnippets.code-snippets
+
+################
+# Distribution #
+################
+
+dist
+.devflow-session
+
+####################
+# Approvals.nodejs #
+####################
+*.received.*
+
+####################
+# dagobah #
+####################
+.yoda/
+
+####################
+# code coverage #
+####################
+coverage/
+.nyc_output/
+
+####################
+# local build      #
+####################
+example/**/*.map
+example/**/*.debug.js
+example/**/bam-browser-sdk.js
+example/**/hls-player.js
+test/buildVerification/package.json
+test/buildVerification/package-lock.json

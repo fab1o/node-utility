@@ -1,0 +1,41 @@
+{
+  "name": "@fab1o/node-utility",
+  "version": "1.0.0",
+  "description": "Utility for node applications",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "jest --silent",
+    "docs": "npm run lint-fix && esdoc",
+    "lint": "eslint . --ext .js",
+    "lint-fix": "prettier --ignore-path \".prettierignore\" --write \"./**/*.{js,ts,json,md}\" && eslint . --ext .js --fix"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "private": false,
+  "bugs": "https://github.com/fab1o/node-utility/issues",
+  "homepage": "https://github.com/fab1o/node-utility",
+  "author": {
+    "name": "Fabio Costa",
+    "url": "https://github.com/fab1o"
+  },
+  "contributors": [],
+  "keywords": [
+    "node-utility",
+    "utility",
+    "utils"
+  ],
+  "license": "ISC",
+  "engines": {
+    "node": ">= 10"
+  },
+  "devDependencies": {
+    "@fab1o/eslint-config-base": "1.2.2",
+    "jest": "27.2.0"
+  },
+  "dependencies": {
+    "@fab1o/git": "1.1.0",
+    "chalk": "4.1.2"
+  }
+}

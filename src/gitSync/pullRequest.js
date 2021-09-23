@@ -1,0 +1,24 @@
+const { GitSync } = require('@fab1o/git');
+
+const string = require('../string');
+
+/**
+ * @param {String} template - PR Template
+ * @param {Object} data - PR data
+ * @param {String} milestone - PR milestone
+ * @param {String} baseBranch - PR base branch
+ * @param {Boolean} [dryRun=true]
+ * @desc Creates a PR
+ * @throws {Error}
+ */
+module.exports = function pullRequest(template, data, milestone, baseBranch, dryRun = true) {
+    const git = new GitSync({ dryRun });
+
+    // fill in fields on template
+    const prDesc = string.replace(template, data);
+
+    // create the pull request
+    git.pullRequest(
+        `--push --force --browse --message '${prDesc}' --milestone "${milestone}" --labels release --base ${baseBranch}`
+    );
+};
