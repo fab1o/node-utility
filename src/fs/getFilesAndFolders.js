@@ -6,7 +6,7 @@ const path = require('path');
  * @since 1.0.0
  * @param {String} source - Directory to look for files and folders
  * @param {RegExp} [nameRegExp] - Regular Expression object to match file and folder names
- * @desc Get files and folders in a folder. Symbolic links are ignored.
+ * @desc Gets files and folders in a folder. Symbolic links are ignored.
  * @returns {Array<fs.Dirent>} List of fs.Dirent (files and folders)
  * @throws {Error}
  */
