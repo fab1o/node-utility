@@ -7,12 +7,13 @@ const string = require('../string');
  * @param {Object} data - PR data
  * @param {String} milestone - PR milestone
  * @param {String} baseBranch - PR base branch
- * @param {Boolean} [dryRun=true]
+ * @param {Boolean} [dryRun] - Run in dry mode
+ * @param {String} [cwd] - Current working directory
  * @desc Creates a PR
  * @throws {Error}
  */
-module.exports = function pullRequest(template, data, milestone, baseBranch, dryRun = true) {
-    const git = new GitSync({ dryRun });
+module.exports = function pullRequest(template, data, milestone, baseBranch, dryRun, cwd) {
+    const git = new GitSync({ dryRun, cwd });
 
     // fill in fields on template
     const prDesc = string.replace(template, data);

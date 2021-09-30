@@ -2,12 +2,13 @@ const { GitSync } = require('@fab1o/git');
 
 /**
  * @param {String} message
- * @param {Boolean} [dryRun=true]
+ * @param {Boolean} [dryRun] - Run in dry mode
+ * @param {String} [cwd] - Current working directory
  * @desc Git commits to current branch
  * @returns {Boolean} Whether successful or not
  */
-module.exports = function commit(message, dryRun) {
-    const git = new GitSync({ dryRun });
+module.exports = function commit(message, dryRun, cwd) {
+    const git = new GitSync({ dryRun, cwd });
 
     try {
         const { stdout } = git.add('.').commit(`--quiet -m "${message}"`).status('--short');

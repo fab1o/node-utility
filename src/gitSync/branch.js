@@ -3,12 +3,13 @@ const { GitSync } = require('@fab1o/git');
 /**
  * @param {String} branchName
  * @param {Boolean} [force=false]
- * @param {Boolean} [dryRun=true]
+ * @param {Boolean} [dryRun] - Run in dry mode
+ * @param {String} [cwd] - Current working directory
  * @desc Creates a branch
  * @throws {Error}
  */
-module.exports = function branch(branchName, force = false, dryRun = true) {
-    const git = new GitSync({ dryRun });
+module.exports = function branch(branchName, force = false, dryRun, cwd) {
+    const git = new GitSync({ dryRun, cwd });
 
     // if branch is already created it will throw an error
     try {
