@@ -4,27 +4,33 @@ const path = require('path');
 /**
  * @access public
  * @since 1.0.0
- * @param {String} source
- * @param {String} target
- * @desc Copies a source path to a target path
+ * @param {String} source - Source path to copy from
+ * @param {String} target - Target path to copy to
+ * @param {Boolean} [overwrite=false] - Overwrite files if possible
+ * @desc Copies folders and files from a source path to a target path
  * @returns {Boolean} Returns true if source was copied to target or false otherwise
- * @throws {Error}
  */
-module.exports = function copyFolder(source, target) {
+module.exports = function copy(source, target, overwrite = false) {
     source = path.resolve(source);
     target = path.resolve(target);
 
+    // if source does not exist, nothing to copy
     if (fs.existsSync(source) === false) {
         throw new Error('Source does not exist');
     }
 
-    // if they are the same, it already exists
-    if (source === target) {
-        return false;
+    // if target exists, do not copy unless overwrite is true
+    if (fs.existsSync(target)) {
+        if (overwrite === false) {
+            return false;
+        }
+    } else {
+        fs.mkdirSync(target);
     }
 
-    if (fs.existsSync(target) === false) {
-        fs.mkdirSync(target);
+    // if they are the same, do not copy unless overwrite is true
+    if (source === target && overwrite === false) {
+        return false;
     }
 
     fs.readdirSync(source).forEach((dir) => {
@@ -35,10 +41,10 @@ module.exports = function copyFolder(source, target) {
 
         switch (true) {
             case stat.isFile():
-                fs.copyFileSync(srcPath, destPath);
+                fs.copyFileSync(srcPath, destPath, fs.constants.COPYFILE_FICLONE);
                 break;
             case stat.isDirectory():
-                copyFolder(srcPath, destPath);
+                copy(srcPath, destPath);
                 break;
             case stat.isSymbolicLink():
                 fs.symlinkSync(fs.readlinkSync(srcPath), destPath);
