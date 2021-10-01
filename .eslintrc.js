@@ -4,6 +4,8 @@ module.exports = {
     },
     extends: [
         '@fab1o/eslint-config-base',
+
+        '@fab1o/eslint-config-base/addon/jest',
         '@fab1o/eslint-config-base/addon/jsdoc',
         '@fab1o/eslint-config-base/addon/prettier'
     ],
