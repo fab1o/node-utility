@@ -10,7 +10,6 @@ const string = require('../string');
  * @param {Boolean} [dryRun] - Run in dry mode
  * @param {String} [cwd] - Current working directory
  * @desc Creates a PR
- * @throws {Error}
  */
 module.exports = function pullRequest(template, data, milestone, baseBranch, dryRun, cwd) {
     const git = new GitSync({ dryRun, cwd });

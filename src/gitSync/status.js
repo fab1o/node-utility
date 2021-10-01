@@ -5,7 +5,6 @@ const { GitSync } = require('@fab1o/git');
  * @param {String} [cwd] - Current working directory
  * @desc Checks if status is clean
  * @returns {Boolean}
- * @throws {Error}
  */
 module.exports = function status(dryRun, cwd) {
     const git = new GitSync({ dryRun, cwd });

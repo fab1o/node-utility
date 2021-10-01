@@ -6,7 +6,7 @@ const { GitSync } = require('@fab1o/git');
  * @param {Boolean} [dryRun] - Run in dry mode
  * @param {String} [cwd] - Current working directory
  * @desc Creates a branch
- * @throws {Error}
+ * @throws {Error} If it does not create a branch
  */
 module.exports = function branch(branchName, force = false, dryRun, cwd) {
     const git = new GitSync({ dryRun, cwd });

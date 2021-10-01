@@ -8,7 +8,6 @@ const path = require('path');
  * @param {RegExp} [nameRegExp] - Regular Expression object to match folder names
  * @desc Gets folders in a folder
  * @returns {Array<fs.Dirent>} List of fs.Dirent (folders)
- * @throws {Error}
  */
 module.exports = function getFolders(source, nameRegExp) {
     const folders = fs
