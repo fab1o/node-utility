@@ -10,6 +10,10 @@ function toString(value) {
         return value.join('');
     }
 
+    if (value == null) {
+        return '';
+    }
+
     return `${value}`;
 }
 
@@ -21,6 +25,10 @@ function toString(value) {
  * @returns {String} Returns `template` with entries modified by values in `data`
  */
 module.exports = function replace(template, data) {
+    if (typeof data !== 'object') {
+        return template.replace(/<[^>]*>/, toString(data));
+    }
+
     const prDesc = Object.entries(data).reduce((prev, curr) => {
         const key = curr[0];
         const value = curr[1];

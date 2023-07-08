@@ -1,26 +1,27 @@
 /**
+ * fs - File System
+ */
+
+/**
  * @access public
  * @since 1.0.0
- * @typedef {Object} fs - util.fs
- * @property {Function} copyFolder - Copies a source path to a target path
- * @property {Function} getFiles - Get files in a folder
- * @property {Function} getFilesAndFolders - Get files and folders in a folder. Symbolic links are ignored.
- * @property {Function} getFolders - Get folders in a folder
- * @property {Function} openFolder - Opens a folder. Folder must be side by side
- * @property {Function} pathExists - Checks if target path exists
+ * @typedef {Object} fs - fs
+ * @property {Function} copySync - Copies folders and files from a source path to a target path.
+ * @property {Function} getFolders - Gets folders in a folder.
+ * @property {Function} pathExists - Checks if target path exists.
+ * @property {Function} deleteFolderSync - Removes a folder synchronously.
+ * @property {Function} deleteFolder - Removes a folder asynchronously.
  */
-const copyFolder = require('./copyFolder');
-const getFiles = require('./getFiles');
-const getFilesAndFolders = require('./getFilesAndFolders');
+const copySync = require('./copySync');
 const getFolders = require('./getFolders');
-const openFolder = require('./openFolder');
 const pathExists = require('./pathExists');
+const deleteFolderSync = require('./deleteFolderSync');
+const deleteFolder = require('./deleteFolder');
 
 module.exports = {
-    copyFolder,
-    getFiles,
-    getFilesAndFolders,
+    copySync,
     getFolders,
-    openFolder,
-    pathExists
+    pathExists,
+    deleteFolderSync,
+    deleteFolder
 };

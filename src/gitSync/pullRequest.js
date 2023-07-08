@@ -1,24 +1,28 @@
-const { GitSync } = require('@fab1o/git');
+const execSync = require('../shell/execSync');
 
 const string = require('../string');
 
 /**
  * @param {String} template - PR Template
- * @param {Object} data - PR data
- * @param {String} milestone - PR milestone
- * @param {String} baseBranch - PR base branch
- * @param {Boolean} [dryRun=true]
+ * @param {Object} data - Data for PR template
+ * @param {Object} [options]
+ * @param {String} [options.baseBranch='main'] - PR base branch
+ * @param {String} [options.milestone=''] - PR milestone
+ * @param {String} [options.labels=''] - PR labels separated by comma
+ * @param {String} [options.shellOptions] - Shell command options
+ * @param {String} [options.shellOptions.cwd]
+ * @param {Boolean} [options.shellOptions.dryRun]
  * @desc Creates a PR
- * @throws {Error}
  */
-module.exports = function pullRequest(template, data, milestone, baseBranch, dryRun = true) {
-    const git = new GitSync({ dryRun });
+module.exports = function pullRequest(template, data, options) {
+    const { baseBranch = 'main', milestone = '', labels = '', shellOptions } = options || {};
 
     // fill in fields on template
     const prDesc = string.replace(template, data);
 
     // create the pull request
-    git.pullRequest(
-        `--push --force --browse --message '${prDesc}' --milestone "${milestone}" --labels release --base ${baseBranch}`
+    execSync(
+        `hub pull-request --push --force --labels '${labels}' --message '${prDesc}' --milestone '${milestone}' --base '${baseBranch}' --browse`,
+        shellOptions
     );
 };

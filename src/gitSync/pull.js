@@ -1,12 +1,11 @@
-const { GitSync } = require('@fab1o/git');
+const execSync = require('../shell/execSync');
 
 /**
- * @param {Boolean} [dryRun=true]
+ * @param {Object} [options] - Shell command options
+ * @param {String} [options.cwd]
+ * @param {Boolean} [options.dryRun]
  * @desc Pulls latest
- * @throws {Error}
  */
-module.exports = function pull(dryRun = true) {
-    const git = new GitSync({ dryRun });
-
-    git.pull('--quiet');
+module.exports = function pull(options) {
+    execSync('git pull --quiet', options);
 };

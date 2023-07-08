@@ -2,14 +2,14 @@ const chalk = require('chalk');
 
 /**
  * @access public
- * @since 1.0.0
+ * @since 2.2.0
  * @param {Array} args
- * @desc Console log an information message
+ * @desc Console log a debug message
  */
-module.exports = function info(...args) {
+module.exports = function debug(...args) {
     if (args.length > 0) {
         const arg0 = args.shift();
 
-        console.info(chalk.cyan(arg0), ...args);
+        console.info(chalk.magenta(arg0), ...args);
     }
 };

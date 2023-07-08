@@ -1,14 +1,15 @@
-const { GitSync } = require('@fab1o/git');
+const execSync = require('../shell/execSync');
 
 /**
  * @param {String} branchName
- * @param {Boolean} [dryRun=true]
+ * @param {Boolean} [force=false]
+ * @param {Object} [options] - Shell command options
+ * @param {String} [options.cwd]
+ * @param {Boolean} [options.dryRun]
  * @desc Push commits to given remote branch
- * @throws {Error}
  */
-module.exports = function push(branchName, dryRun = true) {
-    const git = new GitSync({ dryRun });
+module.exports = function push(branchName, force = false, options) {
+    const forceFlag = force ? '--force' : '';
 
-    // git push commits to remote branch
-    git.push(`--no-verify --force --set-upstream origin ${branchName}`);
+    execSync(`git push --no-verify ${forceFlag} --set-upstream origin ${branchName}`, options);
 };

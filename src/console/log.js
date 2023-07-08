@@ -1,7 +1,5 @@
 const chalk = require('chalk');
 
-const object = require('../object');
-
 const colorFunc = require('./util/colorFunc');
 
 /**
@@ -9,17 +7,13 @@ const colorFunc = require('./util/colorFunc');
  * @since 1.0.0
  * @param {String} color
  * @param {Array} args
- * @desc Console.log
+ * @desc Console log a message
  */
 function log(color, ...args) {
-    if (args.length === 1) {
-        console.log(chalk[color](args[0]));
-    } else if (args.length > 1) {
+    if (args.length > 0) {
         const arg0 = args.shift();
 
         console.log(chalk[color](arg0), ...args);
-    } else {
-        console.log(...args.map((arg) => chalk[color](object.toString(arg))));
     }
 }
 

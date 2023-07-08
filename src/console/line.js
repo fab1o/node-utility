@@ -8,7 +8,7 @@ const colorFunc = require('./util/colorFunc');
  * @param {String} color - Color
  * @param {String} [char='-'] - Character to fill the line with
  * @param {Number} [count=99] - An integer between 0 and +Infinity, indicating the number of times to repeat `dividerChar`
- * Logs a line
+ * @desc Console log a message represented by lines "-----------"
  */
 function line(color, char = '-', count = 99) {
     console.log(chalk[color](char.repeat(count)));

@@ -1,7 +1,20 @@
 /**
- * util.console - Console handling
+ * console - Console handling
  */
 
+/**
+ * @access public
+ * @since 1.0.0
+ * @typedef {Object} console
+ * @property {Function} debug - Console log a debug message
+ * @property {Function} info - Console log an information message
+ * @property {Function} error - Console log an error message
+ * @property {Function} line - Console log a message represented by lines "-----------"
+ * @property {Function} log - Console log a message
+ * @property {Function} warn - Console log a warning message
+ */
+
+const debug = require('./debug');
 const info = require('./info');
 const error = require('./error');
 const line = require('./line');
@@ -13,12 +26,15 @@ const newConsole = {
     line
 };
 
-// bind functions from global console replacing info, warn, error and log
+// bind functions from global console replacing debug, info, warn, error and log
 Object.getOwnPropertyNames(console).forEach((prop) => {
     if (typeof console[prop] === 'function') {
         switch (prop) {
             case 'info':
                 newConsole.info = info;
+                break;
+            case 'debug':
+                newConsole.debug = debug;
                 break;
             case 'warn':
                 newConsole.warn = warn;

@@ -1,20 +1,24 @@
-const { GitSync } = require('@fab1o/git');
+const execSync = require('../shell/execSync');
+
+const getCurrentBranch = require('./getCurrentBranch');
 
 /**
  * @param {String} branchName
- * @param {Boolean} [dryRun=true]
+ * @param {Object} [options={}]
+ * @param {String} [options.cwd]
+ * @param {Boolean} [options.dryRun=false]
  * @desc Checksout a branch
  * @returns {Boolean}
  */
-module.exports = function checkoutBranch(branchName, dryRun = true) {
-    const git = new GitSync({ dryRun });
+module.exports = function checkout(branchName, options = {}) {
+    const { cwd, dryRun = false } = options;
 
     try {
         // checkout branch
-        git.checkout(branchName);
+        execSync(`git checkout ${branchName}`, options);
     } catch (ex) {}
 
-    const currentBranch = git.git('rev-parse --abbrev-ref HEAD').stdout.toString();
+    const currentBranch = getCurrentBranch(cwd);
 
-    return currentBranch.indexOf(branchName) === 0 || dryRun;
+    return currentBranch === branchName || dryRun;
 };

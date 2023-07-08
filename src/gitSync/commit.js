@@ -1,20 +1,18 @@
-const { GitSync } = require('@fab1o/git');
+const execSync = require('../shell/execSync');
+
+const isStatusClean = require('./isStatusClean');
 
 /**
  * @param {String} message
- * @param {Boolean} [dryRun=true]
+ * @param {Object} [options] - Shell command options
+ * @param {String} [options.cwd]
+ * @param {Boolean} [options.dryRun]
  * @desc Git commits to current branch
  * @returns {Boolean} Whether successful or not
  */
-module.exports = function commit(message, dryRun) {
-    const git = new GitSync({ dryRun });
+module.exports = function commit(message, options) {
+    execSync('git add .', options);
+    execSync(`git commit --quiet -m "${message}"`, options);
 
-    try {
-        const { stdout } = git.add('.').commit(`--quiet -m "${message}"`).status('--short');
-
-        return !stdout.toString();
-        // if stdout is empty string, status is clean
-    } catch (ex) {
-        return false;
-    }
+    return isStatusClean(options);
 };
