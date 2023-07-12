@@ -12,6 +12,7 @@
  * @property {Function} line - Console log a message represented by lines "-----------"
  * @property {Function} log - Console log a message
  * @property {Function} warn - Console log a warning message
+ * @property {Function} newLine - Console log a new line (black message)
  */
 
 const debug = require('./debug');
@@ -20,10 +21,12 @@ const error = require('./error');
 const line = require('./line');
 const log = require('./log');
 const warn = require('./warn');
+const newLine = require('./newLine');
 
 const newConsole = {
     // custom functions
-    line
+    line,
+    newLine
 };
 
 // bind functions from global console replacing debug, info, warn, error and log

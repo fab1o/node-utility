@@ -22,10 +22,10 @@ function repeat(str, count) {
  * @access public
  * @since 1.0.0
  * @param {String} color - Color
- * @param {Number} [count=60] - An integer between 0 and +Infinity, indicating the number of times to repeat `dividerChar`
+ * @param {Number} [count=50] - An integer between 0 and +Infinity, indicating the number of times to repeat `dividerChar`
  * @desc Console log a message represented by lines "-----------"
  */
-function line(color, count = 60) {
+function line(color, count = 50) {
     console.log(chalk[color](repeat('-', count)));
 }
 
