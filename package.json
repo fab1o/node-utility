@@ -1,6 +1,6 @@
 {
   "name": "@fab1o/node-utility",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "A swiss-knife Library for Node applications.",
   "main": "index.js",
   "author": {
@@ -11,7 +11,7 @@
   "scripts": {
     "start": "node ./index.js",
     "docs": "jsdoc2md src/index.js src/console/index.js src/fs/index.js src/gitSync/index.js src/object/index.js src/shell/index.js src/string/index.js",
-    "test": "jest --silent --runInBand",
+    "test": "jest --runInBand",
     "lint": "eslint . --ext .js",
     "lint-fix": "prettier --ignore-path \".prettierignore\" --write \"./**/*.{js,ts,json,md}\" && eslint . --ext .js --fix"
   },
