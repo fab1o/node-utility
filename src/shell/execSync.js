@@ -24,5 +24,5 @@ module.exports = function execSync(command, options = {}) {
         return '';
     }
 
-    return process.execSync(command, execOptions).toString();
+    return process.execSync(command, execOptions).toString().trim();
 };
