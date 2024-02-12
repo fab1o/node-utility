@@ -1,4 +1,5 @@
-declare function _exports(annotate: string, message: string, force?: boolean, options?: {
+declare function _exports(annotate: string, message: string, options?: {
+    force?: boolean;
     cwd?: string;
     dryRun?: boolean;
 }): void;
