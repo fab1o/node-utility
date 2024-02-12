@@ -6,6 +6,8 @@ const path = require('path');
  * @since 2.2.0
  * @param {String} dir - Folder path
  * @desc Removes a folder synchronously
+ * @returns {Boolean}
+ * @throws {Error}
  */
 module.exports = function deleteFolderSync(dir) {
     if (fs.existsSync(dir)) {
@@ -20,4 +22,6 @@ module.exports = function deleteFolderSync(dir) {
         });
         fs.rmdirSync(dir);
     }
+
+    return true;
 };

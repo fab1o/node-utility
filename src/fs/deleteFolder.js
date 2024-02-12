@@ -6,7 +6,8 @@ const path = require('path');
  * @since 1.0.0
  * @param {String} dir - Folder path
  * @desc Removes a folder asynchronously
- * @returns {Promise}
+ * @returns {Promise<Boolean>}
+ * @throws {Error}
  */
 module.exports = function deleteFolder(dir) {
     function deleteFile(target, file) {
@@ -23,7 +24,7 @@ module.exports = function deleteFolder(dir) {
                         if (unLinkErr) {
                             reject(unLinkErr);
                         } else {
-                            resolve();
+                            resolve(true);
                         }
                     });
                 }
@@ -33,7 +34,7 @@ module.exports = function deleteFolder(dir) {
 
     return new Promise((resolve, reject) => {
         if (!fs.existsSync(dir)) {
-            resolve();
+            resolve(true);
         }
 
         fs.access(dir, (err) => {
@@ -54,7 +55,7 @@ module.exports = function deleteFolder(dir) {
                                     if (rmDirErr) {
                                         reject(rmDirErr);
                                     } else {
-                                        resolve();
+                                        resolve(true);
                                     }
                                 })
                             )

@@ -1,6 +1,6 @@
 const execSync = require('../shell/execSync');
 
-const getCurrentBranch = require('./getCurrentBranch');
+const getCurrentBranch = require('./getBranchName');
 
 /**
  * @param {String} branchName

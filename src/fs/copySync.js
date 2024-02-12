@@ -9,6 +9,7 @@ const path = require('path');
  * @param {Boolean} [overwrite=false] - Overwrite files if possible
  * @desc Copies folders and files from a source path to a target path
  * @returns {Boolean} Returns true if source was copied to target or false otherwise
+ * @throws {Error}
  */
 module.exports = function copySync(source, target, overwrite = false) {
     source = path.resolve(source);

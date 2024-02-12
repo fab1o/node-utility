@@ -28,7 +28,7 @@ module.exports = function getIssues(options = {}) {
                 };
             })
             .filter((p) => !!p.number);
-    } catch {}
+    } catch (ex) {}
 
     return null;
 };

@@ -16,7 +16,7 @@ module.exports = function getRepoName(options = {}) {
 
         // remove new lines
         return name.replace(/[\r\n]+/g, '');
-    } catch {}
+    } catch (ex) {}
 
     return null;
 };

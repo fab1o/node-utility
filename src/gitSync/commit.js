@@ -11,8 +11,13 @@ const isStatusClean = require('./isStatusClean');
  * @returns {Boolean} Whether successful or not
  */
 module.exports = function commit(message, options) {
-    execSync('git add .', options);
-    execSync(`git commit --quiet -m "${message}"`, options);
+    try {
+        execSync('git add .', options);
+
+        // todo: sanitize message
+
+        execSync(`git commit --no-verify --quiet --message "${message}"`, options);
+    } catch (ex) {}
 
     return isStatusClean(options);
 };

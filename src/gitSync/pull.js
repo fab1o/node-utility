@@ -5,6 +5,7 @@ const execSync = require('../shell/execSync');
  * @param {String} [options.cwd]
  * @param {Boolean} [options.dryRun]
  * @desc Pulls latest
+ * @throws {Error}
  */
 module.exports = function pull(options) {
     execSync('git pull --quiet', options);

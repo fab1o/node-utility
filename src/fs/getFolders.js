@@ -7,16 +7,20 @@ const path = require('path');
  * @param {String} source - Directory to look for folders
  * @param {RegExp} [nameRegExp] - Regular Expression object to match folder names
  * @desc Gets folders in a folder
- * @returns {Array<fs.Dirent>} List of fs.Dirent (folders)
+ * @returns {Array<fs.Dirent>|null} List of fs.Dirent (folders)
  */
 module.exports = function getFolders(source, nameRegExp) {
-    const folders = fs
-        .readdirSync(path.resolve(source), { withFileTypes: true })
-        .filter((item) => item.isDirectory());
+    try {
+        const folders = fs
+            .readdirSync(path.resolve(source), { withFileTypes: true })
+            .filter((item) => item.isDirectory());
 
-    if (nameRegExp) {
-        return folders.filter((dir) => nameRegExp.test(dir.name));
-    }
+        if (nameRegExp) {
+            return folders.filter((dir) => nameRegExp.test(dir.name));
+        }
 
-    return folders;
+        return folders;
+    } catch (ex) {}
+
+    return null;
 };

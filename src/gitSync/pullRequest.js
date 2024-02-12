@@ -13,6 +13,7 @@ const string = require('../string');
  * @param {String} [options.shellOptions.cwd]
  * @param {Boolean} [options.shellOptions.dryRun]
  * @desc Creates a PR
+ * @throws {Error}
  */
 module.exports = function pullRequest(template, data, options) {
     const { baseBranch = 'main', milestone = '', labels = '', shellOptions } = options || {};
