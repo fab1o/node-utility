@@ -10,7 +10,7 @@
   "private": false,
   "scripts": {
     "start": "node ./index.js",
-    "docs": "jsdoc2md src/index.js src/console/index.js src/fs/index.js src/gitSync/index.js src/object/index.js src/shell/index.js src/string/index.js",
+    "docs": "jsdoc2md src/index.js src/console/index.js src/fs/index.js src/git/index.js src/object/index.js src/shell/index.js src/string/index.js",
     "test": "jest --runInBand",
     "lint": "eslint . --ext .js",
     "lint-fix": "prettier --ignore-path \".prettierignore\" --write \"./**/*.{js,ts,json,md}\" && eslint . --ext .js --fix"

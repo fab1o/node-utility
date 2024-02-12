@@ -1,8 +1,8 @@
-const { gitSync } = require('../../src');
+const { git } = require('../../src');
 
-describe('getCurrentBranch', () => {
+describe('getBranchName', () => {
     it('should get current branch', () => {
-        const branch = gitSync.getCurrentBranch();
+        const branch = git.getBranchName();
 
         // prevent new lines to match
         expect(branch).toStrictEqual(expect.stringMatching(/^.+$/));

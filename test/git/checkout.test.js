@@ -1,9 +1,9 @@
-const { gitSync } = require('../../src');
+const { git } = require('../../src');
 
 describe('checkout', () => {
     it('should checkout branch', () => {
-        const currentBranch = gitSync.getCurrentBranch();
-        const checkedout = gitSync.checkout(currentBranch);
+        const branchName = git.getBranchName();
+        const checkedout = git.checkout(branchName);
 
         expect(checkedout).toBe(true);
     });
@@ -12,7 +12,7 @@ describe('checkout', () => {
         const branchName = null;
         const dryRun = true;
 
-        const checkedout = gitSync.checkout(branchName, { dryRun });
+        const checkedout = git.checkout(branchName, { dryRun });
 
         expect(checkedout).toBe(true);
     });

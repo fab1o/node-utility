@@ -1,11 +1,11 @@
 /**
- * gitSync - Git handling synchronously
+ * git - Git handling synchronously
  */
 
 /**
  * @access public
  * @since 1.0.0
- * @typedef {Object} gitSync - gitSync
+ * @typedef {Object} git - git
  * @property {Function} commit - Git commits to current branch.
  * @property {Function} clean - Cleans/Discards all changes to current branch.
  * @property {Function} clone - Clones a repo.
