@@ -14,6 +14,7 @@
  * @property {Function} getBranchName - Gets the name of the current branch.
  * @property {Function} getIssue - Gets issue from repo.
  * @property {Function} getIssues - Gets issues from repo.
+ * @property {Function} getLastCommitMsg - Gets the last commit message.
  * @property {Function} getRepoName - Gets the repository name.
  * @property {Function} pullRequest - Creates a PR.
  * @property {Function} pull - Pulls latest.
@@ -31,6 +32,7 @@ const branch = require('./branch');
 const getBranchName = require('./getBranchName');
 const getIssue = require('./getIssue');
 const getIssues = require('./getIssues');
+const getLastCommitMsg = require('./getLastCommitMsg');
 const getRepoName = require('./getRepoName');
 const pullRequest = require('./pullRequest');
 const pull = require('./pull');
@@ -49,6 +51,7 @@ module.exports = {
     getBranchName,
     getIssue,
     getIssues,
+    getLastCommitMsg,
     getRepoName,
     pullRequest,
     pull,
