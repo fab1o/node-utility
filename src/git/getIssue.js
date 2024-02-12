@@ -9,12 +9,14 @@ const execSync = require('../shell/execSync');
  * @returns {String|null}
  * @note Runs without dryRun because this command just queries
  */
-module.exports = function getIssue(number, options = {}) {
+module.exports = function getIssue(number, options) {
     try {
-        // force to not run dry
-        options.dryRun = false;
+        const { cwd } = options || {};
 
-        return execSync(`hub issue show ${number}`, options);
+        return execSync(`hub issue show ${number}`, {
+            cwd,
+            dryRun: false
+        });
     } catch (ex) {}
 
     return null;

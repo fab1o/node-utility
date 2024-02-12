@@ -1,6 +1,6 @@
 const execSync = require('../shell/execSync');
 
-const getCurrentBranch = require('./getBranchName');
+const getBranchName = require('./getBranchName');
 
 /**
  * @param {String} branchName
@@ -10,15 +10,15 @@ const getCurrentBranch = require('./getBranchName');
  * @desc Checksout a branch
  * @returns {Boolean}
  */
-module.exports = function checkout(branchName, options = {}) {
-    const { cwd, dryRun = false } = options;
+module.exports = function checkout(branchName, options) {
+    const { cwd, dryRun = false } = options || {};
 
     try {
         // checkout branch
         execSync(`git checkout ${branchName}`, options);
     } catch (ex) {}
 
-    const currentBranch = getCurrentBranch(cwd);
+    const currentBranch = getBranchName(cwd);
 
     return currentBranch === branchName || dryRun;
 };

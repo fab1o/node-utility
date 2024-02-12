@@ -7,12 +7,14 @@ const execSync = require('../shell/execSync');
  * @returns {String|null}
  * @note Runs without dryRun because this command just queries
  */
-module.exports = function getRepoName(options = {}) {
+module.exports = function getRepoName(options) {
     try {
-        // force to not run dry
-        options.dryRun = false;
+        const { cwd } = options || {};
 
-        const name = execSync('basename $(git remote get-url origin)', options);
+        const name = execSync('basename $(git remote get-url origin)', {
+            cwd,
+            dryRun: false
+        });
 
         // remove new lines
         return name.replace(/[\r\n]+/g, '');

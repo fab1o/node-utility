@@ -7,12 +7,14 @@ const execSync = require('../shell/execSync');
  * @returns {Array<{number: Number, title: String}>|null}
  * @note Runs without dryRun because this command just queries
  */
-module.exports = function getIssues(options = {}) {
+module.exports = function getIssues(options) {
     try {
-        // force to not run dry
-        options.dryRun = false;
+        const { cwd } = options || {};
 
-        const stdout = execSync(`hub issue --state "open" --format "%i|%t"`, options);
+        const stdout = execSync(`hub issue --state "open" --format "%i|%t"`, {
+            cwd,
+            dryRun: false
+        });
 
         const issues = stdout.split('#');
 

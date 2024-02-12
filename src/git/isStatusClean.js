@@ -9,8 +9,8 @@ const execSync = require('../shell/execSync');
  * @desc Checks if status is clean
  * @returns {Boolean}
  */
-module.exports = function isStatusClean(options = {}) {
-    const { dryRun = false } = options;
+module.exports = function isStatusClean(options) {
+    const { dryRun = false } = options || {};
 
     const output = execSync('git status --porcelain', options);
 
