@@ -10,5 +10,7 @@ const path = require('path');
  * @throws {Error}
  */
 module.exports = function pathExists(target) {
-    return fs.existsSync(path.resolve(target));
+    const targetPath = path.resolve(target);
+
+    return fs.existsSync(targetPath);
 };

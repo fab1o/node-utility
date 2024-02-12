@@ -11,6 +11,10 @@ export type fs = {
      */
     copySync: Function;
     /**
+     * - Creates nested folder apth if it doesn't exist.
+     */
+    createFolderPath: Function;
+    /**
      * - Gets folders in a folder.
      */
     getFolders: Function;
@@ -29,8 +33,9 @@ export type fs = {
 };
 import copy = require("./copy");
 import copySync = require("./copySync");
+import createFolderPath = require("./createFolderPath");
 import getFolders = require("./getFolders");
 import pathExists = require("./pathExists");
 import deleteFolderSync = require("./deleteFolderSync");
 import deleteFolder = require("./deleteFolder");
-export { copy, copySync, getFolders, pathExists, deleteFolderSync, deleteFolder };
+export { copy, copySync, createFolderPath, getFolders, pathExists, deleteFolderSync, deleteFolder };

@@ -74,6 +74,7 @@ fs
 | ---------------- | --------------------- | ---------------------------------------------------------------------------- |
 | copy             | <code>function</code> | Copies folders and files from a source path to a target path asynchronously. |
 | copySync         | <code>function</code> | Copies folders and files from a source path to a target path.                |
+| createFolderPath | <code>function</code> | Creates nested folder apth if it doesn't exist.                              |
 | getFolders       | <code>function</code> | Gets folders in a folder.                                                    |
 | pathExists       | <code>function</code> | Checks if target path exists.                                                |
 | deleteFolderSync | <code>function</code> | Removes a folder synchronously.                                              |
