@@ -13,7 +13,8 @@
     "docs": "jsdoc2md src/index.js src/console/index.js src/fs/index.js src/git/index.js src/object/index.js src/shell/index.js src/string/index.js",
     "test": "jest --runInBand",
     "lint": "eslint . --ext .js",
-    "lint-fix": "prettier --ignore-path \".prettierignore\" --write \"./**/*.{js,ts,json,md}\" && eslint . --ext .js --fix"
+    "lint-fix": "prettier --ignore-path \".prettierignore\" --write \"./**/*.{js,ts,json,md}\" && eslint . --ext .js --fix",
+    "dts": "npx -p typescript tsc index.js --declaration --allowJs --emitDeclarationOnly --outDir types"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -34,5 +35,6 @@
     "semver": "7.3.6",
     "yargs": "17.4.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "types": "types/index.d.ts"
 }
