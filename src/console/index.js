@@ -12,7 +12,7 @@
  * @property {Function} line - Console log a message represented by lines "-----------"
  * @property {Function} log - Console log a message
  * @property {Function} warn - Console log a warning message
- * @property {Function} newLine - Console log a new line (black message)
+ * @property {Function} cr - Console log a carriage return (blank line)
  */
 
 const debug = require('./debug');
@@ -21,38 +21,14 @@ const error = require('./error');
 const line = require('./line');
 const log = require('./log');
 const warn = require('./warn');
-const newLine = require('./newLine');
+const cr = require('./cr');
 
-const newConsole = {
-    // custom functions
+module.exports = {
+    debug,
+    info,
+    error,
     line,
-    newLine
+    log,
+    warn,
+    cr
 };
-
-// bind functions from global console replacing debug, info, warn, error and log
-Object.getOwnPropertyNames(console).forEach((prop) => {
-    if (typeof console[prop] === 'function') {
-        switch (prop) {
-            case 'info':
-                newConsole.info = info;
-                break;
-            case 'debug':
-                newConsole.debug = debug;
-                break;
-            case 'warn':
-                newConsole.warn = warn;
-                break;
-            case 'error':
-                newConsole.error = error;
-                break;
-            case 'log':
-                newConsole.log = log;
-                break;
-            default:
-                newConsole[prop] = console[prop].bind(console);
-                break;
-        }
-    }
-});
-
-module.exports = newConsole;

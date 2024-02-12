@@ -1,7 +1,5 @@
 const chalk = require('chalk');
 
-const colorFunc = require('./util/colorFunc');
-
 function repeat(str, count) {
     let result = '';
 
@@ -21,12 +19,25 @@ function repeat(str, count) {
 /**
  * @access public
  * @since 1.0.0
- * @param {String} color - Color
+ * @param {String} [color] - Color
  * @param {Number} [count=50] - An integer between 0 and +Infinity, indicating the number of times to repeat `dividerChar`
  * @desc Console log a message represented by lines "-----------"
  */
-function line(color, count = 50) {
-    console.log(chalk[color](repeat('-', count)));
+function coloredLine(color, count = 50) {
+    if (color) {
+        console.log(chalk[color](repeat('-', count)));
+    } else {
+        console.log(repeat('-', count));
+    }
 }
 
-module.exports = colorFunc(line);
+const line = coloredLine.bind(null, null);
+
+line.red = coloredLine.bind(null, 'red');
+line.green = coloredLine.bind(null, 'green');
+line.yellow = coloredLine.bind(null, 'yellow');
+line.blue = coloredLine.bind(null, 'blue');
+line.magenta = coloredLine.bind(null, 'magenta');
+line.cyan = coloredLine.bind(null, 'cyan');
+
+module.exports = line;

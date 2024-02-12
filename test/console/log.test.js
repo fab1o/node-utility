@@ -1,6 +1,6 @@
 const console = require('../../src/console/index');
 
-describe('console.line', () => {
+describe('console.log', () => {
     let logSpy;
 
     beforeEach(() => {
@@ -11,14 +11,14 @@ describe('console.line', () => {
         jest.clearAllMocks();
     });
 
-    it('should print lines', () => {
-        console.line(1);
+    it('should print log', () => {
+        console.log(1);
 
         expect(logSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('should print red lines', () => {
-        console.line.red(1);
+    it('should print red log', () => {
+        console.log.red(1);
 
         expect(logSpy).toHaveBeenCalledTimes(1);
     });
