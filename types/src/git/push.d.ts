@@ -1,4 +1,4 @@
-declare function _exports(branchName?: string, force?: boolean, options?: {
+declare function _exports(force?: boolean, branchName?: string, options?: {
     cwd?: string;
     dryRun?: boolean;
 }): void;
