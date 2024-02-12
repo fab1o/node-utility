@@ -35,9 +35,21 @@ export type git = {
      */
     getIssues: Function;
     /**
+     * - Gets the last commit.
+     */
+    getLastCommit: Function;
+    /**
+     * - Gets the last commit hash.
+     */
+    getLastCommitHash: Function;
+    /**
      * - Gets the last commit message.
      */
     getLastCommitMsg: Function;
+    /**
+     * - Gets the last tag.
+     */
+    getLastTag: Function;
     /**
      * - Gets the repository name.
      */
@@ -79,7 +91,10 @@ import branch = require("./branch");
 import getBranchName = require("./getBranchName");
 import getIssue = require("./getIssue");
 import getIssues = require("./getIssues");
+import getLastCommit = require("./getLastCommit");
 import getLastCommitMsg = require("./getLastCommitMsg");
+import getLastCommitHash = require("./getLastCommitHash");
+import getLastTag = require("./getLastTag");
 import getRepoName = require("./getRepoName");
 import pullRequest = require("./pullRequest");
 import pull = require("./pull");
@@ -88,4 +103,4 @@ import reset = require("./reset");
 import stash = require("./stash");
 import isStatusClean = require("./isStatusClean");
 import tag = require("./tag");
-export { commit, clean, clone, checkout, branch, getBranchName, getIssue, getIssues, getLastCommitMsg, getRepoName, pullRequest, pull, push, reset, stash, isStatusClean, tag };
+export { commit, clean, clone, checkout, branch, getBranchName, getIssue, getIssues, getLastCommit, getLastCommitMsg, getLastCommitHash, getLastTag, getRepoName, pullRequest, pull, push, reset, stash, isStatusClean, tag };
