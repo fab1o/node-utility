@@ -1,6 +1,6 @@
 {
   "name": "@fab1o/node-utility",
-  "version": "1.8.9",
+  "version": "1.9.0",
   "description": "A swiss-knife Library for Node applications.",
   "main": "index.js",
   "author": {
