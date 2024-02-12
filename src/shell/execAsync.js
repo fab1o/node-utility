@@ -5,14 +5,14 @@ const process = require('child_process');
  * @since 1.7.0
  * @param {String} command - Command to execute
  * @param {Object} [options={}]
- * @param {String} [options.cwd] - Working path to set git to work in
- * @param {String} [options.dryRun] - Do not run command, only logs them
+ * @param {String} [options.cwd='.'] - Working path to set git to work in
+ * @param {Boolean} [options.dryRun=false] - Do not run command, only logs them
  * @desc Execute shell commands asynchroniously.
  * @returns {String} Output
  * @throws {Error}
  */
-module.exports = function execAsync(command, options = {}) {
-    const { cwd = '.', dryRun = false } = options;
+module.exports = function execAsync(command, options) {
+    const { cwd = '.', dryRun = false } = options || {};
 
     const execOptions = {
         cwd,

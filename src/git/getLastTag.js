@@ -1,5 +1,4 @@
 const execSync = require('../shell/execSync');
-const getLastCommitHash = require('./getLastCommitHash');
 
 /**
  * @access public
@@ -12,22 +11,21 @@ const getLastCommitHash = require('./getLastCommitHash');
  */
 module.exports = function getLastTag(options = {}) {
     try {
-        // force to not run dry
-        options.dryRun = false;
+        const { cwd } = options || {};
 
-        const hash = getLastCommitHash(options);
+        const tags = execSync(
+            `git for-each-ref refs/tags --sort=-taggerdate --format='%(refname:short)' --count=1`,
+            {
+                cwd,
+                dryRun: false
+            }
+        );
 
-        if (!hash) {
+        if (!tags) {
             return null;
         }
 
-        const tags = execSync(`git tag --contains ${hash}`, options);
-
-        if (!tags || !tags.length) {
-            return null;
-        }
-
-        return tags[0];
+        return tags;
     } catch (ex) {}
 
     return null;

@@ -11,11 +11,13 @@ const execSync = require('../shell/execSync');
  */
 module.exports = function getLastCommitMsg(options = {}) {
     try {
-        // force to not run dry
-        options.dryRun = false;
+        const { cwd } = options || {};
 
         // git log -1 --pretty=%B
-        const message = execSync('git show-branch --no-name HEAD', options);
+        const message = execSync('git show-branch --no-name HEAD', {
+            cwd,
+            dryRun: false
+        });
 
         return message;
     } catch (ex) {}

@@ -11,10 +11,12 @@ const execSync = require('../shell/execSync');
  */
 module.exports = function getLastCommitHash(options = {}) {
     try {
-        // force to not run dry
-        options.dryRun = false;
+        const { cwd } = options || {};
 
-        const hash = execSync('git rev-parse HEAD', options);
+        const hash = execSync('git rev-parse HEAD', {
+            cwd,
+            dryRun: false
+        });
 
         return hash;
     } catch (ex) {}

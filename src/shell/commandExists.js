@@ -9,7 +9,11 @@ const execSync = require('./execSync');
  */
 module.exports = function commandExists(command) {
     try {
-        return !!execSync(`command -v ${command}`);
+        if (command) {
+            return !!execSync(`command -v ${command}`);
+        }
+
+        return false;
     } catch {
         return false;
     }

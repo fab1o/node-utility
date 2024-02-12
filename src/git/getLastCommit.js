@@ -10,13 +10,19 @@ const getLastCommitMsg = require('./getLastCommitMsg');
  * @returns {{hash: String, message: String}|null}
  * @note Runs without dryRun because this command just queries
  */
-module.exports = function getLastCommit(options = {}) {
+module.exports = function getLastCommit(options) {
     try {
-        // force to not run dry
-        options.dryRun = false;
+        const { cwd } = options || {};
 
-        const hash = getLastCommitHash(options);
-        const message = getLastCommitMsg(options);
+        const hash = getLastCommitHash({
+            cwd,
+            dryRun: false
+        });
+
+        const message = getLastCommitMsg({
+            cwd,
+            dryRun: false
+        });
 
         return {
             hash,
