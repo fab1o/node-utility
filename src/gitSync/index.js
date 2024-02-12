@@ -11,7 +11,7 @@
  * @property {Function} clone - Clones a repo.
  * @property {Function} checkout - Checksout a branch and pulls latest.
  * @property {Function} branch - Creates a branch.
- * @property {Function} getCurrentBranch - Gets the name of the current branch.
+ * @property {Function} getBranchName - Gets the name of the current branch.
  * @property {Function} getIssue - Gets issue from repo.
  * @property {Function} getIssues - Gets issues from repo.
  * @property {Function} getRepoName - Gets the repository name.
@@ -21,13 +21,14 @@
  * @property {Function} reset - Discards all changes to current branch.
  * @property {Function} stash - Stashes all changes of current branch.
  * @property {Function} isStatusClean - Checks if status is clean.
+ * @property {Function} tag - Creates a pointer (tag) to current commmit.
  */
 const commit = require('./commit');
 const clean = require('./clean');
 const clone = require('./clone');
 const checkout = require('./checkout');
 const branch = require('./branch');
-const getCurrentBranch = require('./getCurrentBranch');
+const getBranchName = require('./getBranchName');
 const getIssue = require('./getIssue');
 const getIssues = require('./getIssues');
 const getRepoName = require('./getRepoName');
@@ -37,6 +38,7 @@ const push = require('./push');
 const reset = require('./reset');
 const stash = require('./stash');
 const isStatusClean = require('./isStatusClean');
+const tag = require('./tag');
 
 module.exports = {
     commit,
@@ -44,7 +46,7 @@ module.exports = {
     clone,
     checkout,
     branch,
-    getCurrentBranch,
+    getBranchName,
     getIssue,
     getIssues,
     getRepoName,
@@ -53,5 +55,6 @@ module.exports = {
     push,
     reset,
     stash,
-    isStatusClean
+    isStatusClean,
+    tag
 };
