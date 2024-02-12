@@ -13,7 +13,7 @@ const getBranchName = require('./getBranchName');
  * @desc Push commits to given remote branch
  */
 module.exports = function push(branchName = getBranchName(), options) {
-    const { force } = options || {};
+    const { force = false } = options || {};
 
     const forceFlag = force ? '--force' : '';
 

@@ -3,14 +3,16 @@ const execSync = require('../shell/execSync');
 /**
  * @param {String} annotate
  * @param {String} message
- * @param {Boolean} [force=false]
- * @param {Object} [options] - Shell command options
+ * @param {Object} [options={}] - Shell command options
+ * @param {Boolean} [options.force=false]
  * @param {String} [options.cwd]
  * @param {Boolean} [options.dryRun]
  * @desc Push commits to given remote branch
  * @throws {Error} If it does not push the commits
  */
-module.exports = function tag(annotate, message, force = false, options) {
+module.exports = function tag(annotate, message, options) {
+    const { force = false } = options || {};
+
     const forceFlag = force ? '--force' : '';
 
     // todo: sanitize message
