@@ -4,7 +4,7 @@ const isStatusClean = require('./isStatusClean');
 
 /**
  * @param {String} message
- * @param {Object} [options] - Shell command options
+ * @param {Object} [options]
  * @param {String} [options.cwd]
  * @param {Boolean} [options.dryRun]
  * @desc Git commits to current branch

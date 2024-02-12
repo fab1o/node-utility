@@ -2,7 +2,7 @@ const execSync = require('../shell/execSync');
 
 /**
  * @param {String} branchName
- * @param {Object} [options={}] - Shell command options
+ * @param {Object} [options={}]
  * @param {String} [options.baseBranch]
  * @param {Boolean} [options.force=false]
  * @param {String} [options.cwd]

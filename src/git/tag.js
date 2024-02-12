@@ -3,7 +3,7 @@ const execSync = require('../shell/execSync');
 /**
  * @param {String} annotate
  * @param {String} message
- * @param {Object} [options={}] - Shell command options
+ * @param {Object} [options={}]
  * @param {Boolean} [options.force=false]
  * @param {String} [options.cwd]
  * @param {Boolean} [options.dryRun]

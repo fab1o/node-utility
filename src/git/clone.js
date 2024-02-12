@@ -2,15 +2,18 @@ const execSync = require('../shell/execSync');
 
 /**
  * @param {String} uri
- * @param {Object} [options] - Shell command options
+ * @param {Object} [options]
+ * @param {Object} [options.folderName] - Folder name
  * @param {String} [options.cwd]
  * @param {Boolean} [options.dryRun]
  * @desc Clones a repo
  * @returns {Boolean}
  */
-module.exports = function commit(uri, options) {
+module.exports = function clone(uri, options) {
     try {
-        execSync(`git clone --quiet "${uri}"`, options);
+        const { folderName = '' } = options || {};
+
+        execSync(`git clone --quiet "${uri}" ${folderName}`, options);
 
         return true;
     } catch {}

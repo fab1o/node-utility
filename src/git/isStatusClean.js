@@ -3,7 +3,7 @@ const execSync = require('../shell/execSync');
 /**
  * @access public
  * @since 1.0.0
- * @param {Object} [options] - Shell command options
+ * @param {Object} [options]
  * @param {String} [options.cwd]
  * @param {Boolean} [options.dryRun=false]
  * @desc Checks if status is clean

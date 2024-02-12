@@ -6,7 +6,7 @@ const getBranchName = require('./getBranchName');
  * @access public
  * @since 1.0.0
  * @param {String} [branchName=git.getBranchName()]
- * @param {Object} [options={}] - Shell command options
+ * @param {Object} [options={}]
  * @param {Boolean} [options.force=false]
  * @param {String} [options.cwd]
  * @param {Boolean} [options.dryRun]
