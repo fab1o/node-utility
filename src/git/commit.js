@@ -3,6 +3,7 @@ const execSync = require('../shell/execSync');
 const isStatusClean = require('./isStatusClean');
 
 /**
+ * @access public
  * @param {String} message
  * @param {Object} [options]
  * @param {String} [options.cwd]

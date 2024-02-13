@@ -1,5 +1,5 @@
 /**
- * @access public
+ * @access private
  * @since 1.0.0
  * @param {*} value
  * @desc Converts any type of value to string for use in `replaceTemplate`

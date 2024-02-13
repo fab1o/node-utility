@@ -17,7 +17,7 @@ function repeat(str, count) {
 }
 
 /**
- * @access public
+ * @access private
  * @since 1.0.0
  * @param {String} [color] - Color
  * @param {Number} [count=50] - An integer between 0 and +Infinity, indicating the number of times to repeat `dividerChar`

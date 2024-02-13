@@ -1,7 +1,7 @@
 const chalk = require('chalk');
 
 /**
- * @access public
+ * @access private
  * @since 1.0.0
  * @param {String} [color]
  * @param {Array} args

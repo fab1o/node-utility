@@ -1,6 +1,7 @@
 const execSync = require('../shell/execSync');
 
 /**
+ * @access public
  * @param {Number} number - Issue number
  * @param {Object} [options={}]
  * @param {String} [options.cwd]

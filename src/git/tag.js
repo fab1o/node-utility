@@ -1,6 +1,7 @@
 const execSync = require('../shell/execSync');
 
 /**
+ * @access public
  * @param {String} annotate
  * @param {String} message
  * @param {Object} [options={}]

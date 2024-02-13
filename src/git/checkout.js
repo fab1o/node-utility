@@ -3,6 +3,7 @@ const execSync = require('../shell/execSync');
 const getBranchName = require('./getBranchName');
 
 /**
+ * @access public
  * @param {String} branchName
  * @param {Object} [options={}]
  * @param {String} [options.cwd]

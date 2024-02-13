@@ -1,6 +1,7 @@
 const execSync = require('../shell/execSync');
 
 /**
+ * @access public
  * @param {String} uri
  * @param {Object} [options]
  * @param {Object} [options.folderName] - Folder name

@@ -1,6 +1,7 @@
 const execSync = require('../shell/execSync');
 
 /**
+ * @access public
  * @param {Object} [options={}]
  * @param {String} [options.cwd]
  * @desc Gets the repository name
