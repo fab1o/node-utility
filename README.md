@@ -7,13 +7,13 @@ A swiss-knife Library for Node applications.
 | Name    | Type                | Description          |
 | ------- | ------------------- | -------------------- |
 | console | <code>Object</code> | Console logging      |
-| fs      | <code>Object</code> | Node's file system   |
-| gitSync | <code>Object</code> | Git Synchronous      |
+| fs      | <code>Object</code> | File system          |
+| git     | <code>Object</code> | Git Synchronous      |
 | object  | <code>Object</code> | Object Manipulations |
 | shell   | <code>Object</code> | Shell commands       |
 | string  | <code>Object</code> | String Manipulations |
 
-Click [here](/docs.md) to see the full documentation.
+See [full documentation](/docs.md)
 
 ### Prerequisites
 
@@ -22,13 +22,13 @@ Click [here](/docs.md) to see the full documentation.
 
 **Setup hub for GitHub Enterprise**
 
-1. Have hub recognize your GitHub Enterprise hostname:
+1. If you're runnning GitHub Enterprise, run this command to set your hostname:
 
     ```sh
     git config --global --add hub.host <your_github_host>
     ```
 
-2. Run a simple command **on any repository folder** to have hub create an OAuth token, for instance:
+2. Run a simple command **on any repository folder** to create an OAuth token, for instance:
 
     ```sh
     hub pr list
