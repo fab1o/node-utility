@@ -56,12 +56,14 @@ git
 | checkout | <code>function</code> | Checksout a branch and pulls latest. |
 | branch | <code>function</code> | Creates a branch. |
 | getBranchName | <code>function</code> | Gets the name of the current branch. |
+| getDefaultBranch | <code>function</code> | Gets the name of the default branch. |
 | getIssue | <code>function</code> | Gets issue from repo. |
 | getIssues | <code>function</code> | Gets issues from repo. |
 | getLastCommit | <code>function</code> | Gets the last commit. |
 | getLastCommitHash | <code>function</code> | Gets the last commit hash. |
 | getLastCommitMsg | <code>function</code> | Gets the last commit message. |
 | getLastTag | <code>function</code> | Gets the last tag. |
+| getLastTags | <code>function</code> | Gets the last tags. |
 | getRepoName | <code>function</code> | Gets the repository name. |
 | pullRequest | <code>function</code> | Creates a PR. |
 | pull | <code>function</code> | Pulls latest. |
