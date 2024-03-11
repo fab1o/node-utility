@@ -1,7 +1,17 @@
-export * from './debug';
-export * from './info';
-export * from './error';
-export * from './line';
-export * from './log';
-export * from './warn';
-export * from './cr';
+const debug = require('./debug');
+const info = require('./info');
+const error = require('./error');
+const line = require('./line');
+const log = require('./log');
+const warn = require('./warn');
+const cr = require('./cr');
+
+module.exports = {
+    debug,
+    info,
+    error,
+    line,
+    log,
+    warn,
+    cr
+};
