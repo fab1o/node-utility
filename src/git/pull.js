@@ -8,5 +8,5 @@ const execSync = require('../shell/execSync');
  * @desc Pulls latest
  */
 module.exports = function pull(options) {
-    execSync('git pull --quiet', options);
+    execSync('git pull --quiet --all', options);
 };
