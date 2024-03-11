@@ -12,12 +12,14 @@
  * @property {Function} checkout - Checksout a branch and pulls latest.
  * @property {Function} branch - Creates a branch.
  * @property {Function} getBranchName - Gets the name of the current branch.
+ * @property {Function} getDefaultBranch - Gets the name of the default branch.
  * @property {Function} getIssue - Gets issue from repo.
  * @property {Function} getIssues - Gets issues from repo.
  * @property {Function} getLastCommit - Gets the last commit.
  * @property {Function} getLastCommitHash - Gets the last commit hash.
  * @property {Function} getLastCommitMsg - Gets the last commit message.
  * @property {Function} getLastTag - Gets the last tag.
+ * @property {Function} getLastTags - Gets the last tags.
  * @property {Function} getRepoName - Gets the repository name.
  * @property {Function} pullRequest - Creates a PR.
  * @property {Function} pull - Pulls latest.
@@ -33,12 +35,14 @@ const clone = require('./clone');
 const checkout = require('./checkout');
 const branch = require('./branch');
 const getBranchName = require('./getBranchName');
+const getDefaultBranch = require('./getDefaultBranch');
 const getIssue = require('./getIssue');
 const getIssues = require('./getIssues');
 const getLastCommit = require('./getLastCommit');
 const getLastCommitHash = require('./getLastCommitHash');
 const getLastCommitMsg = require('./getLastCommitMsg');
 const getLastTag = require('./getLastTag');
+const getLastTags = require('./getLastTags');
 const getRepoName = require('./getRepoName');
 const pullRequest = require('./pullRequest');
 const pull = require('./pull');
@@ -55,12 +59,14 @@ module.exports = {
     checkout,
     branch,
     getBranchName,
+    getDefaultBranch,
     getIssue,
     getIssues,
     getLastCommit,
     getLastCommitMsg,
     getLastCommitHash,
     getLastTag,
+    getLastTags,
     getRepoName,
     pullRequest,
     pull,
