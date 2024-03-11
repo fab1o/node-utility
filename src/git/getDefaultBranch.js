@@ -43,7 +43,6 @@ module.exports = function getDefaultBranch(options) {
             });
         }
 
-        // remove new lines
         return defaultBranch;
     } catch (ex) {}
 
