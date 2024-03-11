@@ -13,7 +13,7 @@
     "docs": "jsdoc2md src/**/*.js > docs.md",
     "test": "jest --runInBand",
     "lint": "eslint . --ext .js",
-    "publish": "npm i && npm test && npm run dts && npm run docs && npm run lint:fix && npm publish --access public",
+    "package": "npm i && npm test && npm run dts && npm run docs && npm run lint:fix",
     "lint:fix": "prettier --ignore-path \".prettierignore\" --write \"./**/*.{js,ts,json,md}\" && eslint . --ext .js --fix",
     "dts": "npx -p typescript tsc ./src/index.js --declaration --allowJs --emitDeclarationOnly --outDir types"
   },
