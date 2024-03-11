@@ -1,6 +1,6 @@
 {
   "name": "@fab1o/node-utility",
-  "version": "1.9.4",
+  "version": "1.9.5",
   "description": "A swiss-knife Library for Node applications.",
   "main": "src/index.js",
   "author": {
@@ -13,9 +13,10 @@
     "docs": "jsdoc2md src/**/*.js > docs.md",
     "test": "jest --runInBand",
     "lint": "eslint . --ext .js",
+    "package": "npm i && npm run lint:fix && npm test && npm run docs && npm run dts",
     "publish": "npm test && npm run dts && npm run docs && npm run lint-fix && npm publish --access public",
-    "lint-fix": "prettier --ignore-path \".prettierignore\" --write \"./**/*.{js,ts,json,md}\" && eslint . --ext .js --fix",
-    "dts": "npx -p typescript tsc index.js --declaration --allowJs --emitDeclarationOnly --outDir types"
+    "lint:fix": "prettier --ignore-path \".prettierignore\" --write \"./**/*.{js,ts,json,md}\" && eslint . --ext .js --fix",
+    "dts": "npx -p typescript tsc ./src/index.js --declaration --allowJs --emitDeclarationOnly --outDir types"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
