@@ -1,5 +1,5 @@
 declare function _exports(options?: {
-    annotated?: any;
+    annotated?: boolean;
     cwd?: string;
 }): string | null;
 export = _exports;

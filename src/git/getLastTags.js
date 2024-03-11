@@ -5,7 +5,7 @@ const execSync = require('../shell/execSync');
  * @since 1.9.5
  * @param {Object} [qty=1] - Quantity of tags to retrieve.
  * @param {Object} [options={}]
- * @param {Object} [options.annotated=false] - Order by taggerdate (only works for annotated tags)
+ * @param {Boolean} [options.annotated=false] - Order by taggerdate (only works for annotated tags)
  * @param {String} [options.cwd]
  * @desc Gets the last tags
  * @returns {String[]|null} - Return an array of tags or null if non existent. If annotated is true, returns null when it can't find annotated tags.

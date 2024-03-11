@@ -4,7 +4,7 @@ const getLastTags = require('./getLastTags');
  * @access public
  * @since 1.8.4
  * @param {Object} [options={}]
- * @param {Object} [options.annotated=false] - Order by taggerdate (only works for annotated tags)
+ * @param {Boolean} [options.annotated=false] - Order by taggerdate (only works for annotated tags)
  * @param {String} [options.cwd]
  * @desc Gets the last tag
  * @returns {String|null} - Return a tag or null if non existent. If annotated is true, returns null when it can't find annotated tag.
