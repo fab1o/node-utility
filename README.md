@@ -17,6 +17,8 @@ See [full documentation](/docs.md)
 
 ### Prerequisites
 
+Latest versions of:
+
 -   git: [https://git-scm.com/downloads](https://git-scm.com/downloads)
 -   hub: [https://hub.github.com](https://hub.github.com)
 
