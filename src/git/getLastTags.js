@@ -15,7 +15,7 @@ module.exports = function getLastTags(qty = 1, options = {}) {
     try {
         const { cwd, annotated = false } = options || {};
 
-        execSync('git fetch --quiet --tags --all', {
+        execSync('git fetch --quiet --tags --all --prune --prune-tags', {
             cwd,
             dryRun: false
         });
