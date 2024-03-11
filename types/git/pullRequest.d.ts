@@ -1,7 +1,12 @@
-declare function _exports(template: string, data: any, options?: {
-    baseBranch?: string;
+declare function _exports(title: string, description: string, options: {
+    baseBranch: string;
+    noEdit?: boolean;
+    browse?: boolean;
+    draft?: boolean;
     milestone?: string;
     labels?: string;
+    assign?: string;
+    reviewer?: string;
     cwd?: string;
     dryRun?: boolean;
 }): void;
