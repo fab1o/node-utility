@@ -13,7 +13,7 @@ const isStatusClean = require('./isStatusClean');
  */
 module.exports = function commit(message, options) {
     try {
-        execSync('git add .', options);
+        execSync('git add --all', options);
 
         // todo: sanitize message
 
