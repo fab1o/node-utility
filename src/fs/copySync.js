@@ -34,6 +34,25 @@ module.exports = function copySync(source, target, overwrite = false) {
         return false;
     }
 
+    const stat = fs.lstatSync(source);
+
+    switch (true) {
+        case stat.isFile():
+            fs.copyFileSync(source, target, fs.constants.COPYFILE_FICLONE);
+            break;
+        case stat.isSymbolicLink():
+            fs.symlinkSync(fs.readlinkSync(source), target);
+            break;
+        case stat.isDirectory():
+            return copyDirSync(source, target, overwrite);
+        default:
+            break;
+    }
+
+    return true;
+};
+
+function copyDirSync(source, target, overwrite) {
     fs.readdirSync(source).forEach((dir) => {
         const paths = [source, target];
         const [srcPath, destPath] = paths.map((p) => path.join(p, dir));
@@ -44,16 +63,15 @@ module.exports = function copySync(source, target, overwrite = false) {
             case stat.isFile():
                 fs.copyFileSync(srcPath, destPath, fs.constants.COPYFILE_FICLONE);
                 break;
-            case stat.isDirectory():
-                copySync(srcPath, destPath);
-                break;
             case stat.isSymbolicLink():
                 fs.symlinkSync(fs.readlinkSync(srcPath), destPath);
                 break;
+            case stat.isDirectory():
+                return copyDirSync(srcPath, destPath, overwrite);
             default:
                 break;
         }
-    });
 
-    return true;
-};
+        return true;
+    });
+}
