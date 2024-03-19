@@ -56,7 +56,7 @@ module.exports = function pullRequest(title, description, options) {
 
     // create the pull request
     execSync(
-        `hub pull-request --push --force --copy --labels '${labels}' --message '${message}' --milestone '${milestone}' --base '${baseBranch}' ${browseFlag} ${noEditFlag} ${draftFlag} ${assignFlag} ${reviewerFlag}`,
+        `hub pull-request --push --force --labels '${labels}' --message '${message}' --milestone '${milestone}' --base '${baseBranch}' ${browseFlag} ${noEditFlag} ${draftFlag} ${assignFlag} ${reviewerFlag}`,
         shellOptions
     );
 };
