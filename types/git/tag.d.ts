@@ -1,4 +1,4 @@
-declare function _exports(annotate: string, message: string, options?: {
+declare function _exports(tagName: string, message: string, options?: {
     force?: boolean;
     cwd?: string;
     dryRun?: boolean;

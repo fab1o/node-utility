@@ -52,11 +52,12 @@ git
 
 | Name              | Type                  | Description                                    |
 | ----------------- | --------------------- | ---------------------------------------------- |
+| branch            | <code>function</code> | Creates a branch.                              |
 | commit            | <code>function</code> | Git commits to current branch.                 |
 | clean             | <code>function</code> | Cleans/Discards all changes to current branch. |
 | clone             | <code>function</code> | Clones a repo.                                 |
 | checkout          | <code>function</code> | Checksout a branch and pulls latest.           |
-| branch            | <code>function</code> | Creates a branch.                              |
+| deleteTag         | <code>function</code> | Deletes a tag remotely and locally.            |
 | getBranchName     | <code>function</code> | Gets the name of the current branch.           |
 | getDefaultBranch  | <code>function</code> | Gets the name of the default branch.           |
 | getIssue          | <code>function</code> | Gets issue from repo.                          |
@@ -70,6 +71,7 @@ git
 | pullRequest       | <code>function</code> | Creates a PR.                                  |
 | pull              | <code>function</code> | Pulls latest.                                  |
 | push              | <code>function</code> | Push commits to given remote branch.           |
+| pushTags          | <code>function</code> | Push tags to given remote branch.              |
 | reset             | <code>function</code> | Discards all changes to current branch.        |
 | stash             | <code>function</code> | Stashes all changes of current branch.         |
 | isStatusClean     | <code>function</code> | Checks if status is clean.                     |

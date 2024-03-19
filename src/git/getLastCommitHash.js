@@ -9,7 +9,7 @@ const execSync = require('../shell/execSync');
  * @returns {String|null}
  * @note Runs without dryRun because this command just queries
  */
-module.exports = function getLastCommitHash(options = {}) {
+module.exports = function getLastCommitHash(options) {
     try {
         const { cwd } = options || {};
 

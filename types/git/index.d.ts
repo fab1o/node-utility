@@ -3,6 +3,10 @@
  */
 export type git = {
     /**
+     * - Creates a branch.
+     */
+    branch: Function;
+    /**
      * - Git commits to current branch.
      */
     commit: Function;
@@ -19,9 +23,9 @@ export type git = {
      */
     checkout: Function;
     /**
-     * - Creates a branch.
+     * - Deletes a tag remotely and locally.
      */
-    branch: Function;
+    deleteTag: Function;
     /**
      * - Gets the name of the current branch.
      */
@@ -75,6 +79,10 @@ export type git = {
      */
     push: Function;
     /**
+     * - Push tags to given remote branch.
+     */
+    pushTags: Function;
+    /**
      * - Discards all changes to current branch.
      */
     reset: Function;
@@ -91,11 +99,12 @@ export type git = {
      */
     tag: Function;
 };
+import branch = require("./branch");
 import commit = require("./commit");
 import clean = require("./clean");
 import clone = require("./clone");
 import checkout = require("./checkout");
-import branch = require("./branch");
+import deleteTag = require("./deleteTag");
 import getBranchName = require("./getBranchName");
 import getDefaultBranch = require("./getDefaultBranch");
 import getIssue = require("./getIssue");
@@ -109,8 +118,9 @@ import getRepoName = require("./getRepoName");
 import pullRequest = require("./pullRequest");
 import pull = require("./pull");
 import push = require("./push");
+import pushTags = require("./pushTags");
 import reset = require("./reset");
 import stash = require("./stash");
 import isStatusClean = require("./isStatusClean");
 import tag = require("./tag");
-export { commit, clean, clone, checkout, branch, getBranchName, getDefaultBranch, getIssue, getIssues, getLastCommit, getLastCommitMsg, getLastCommitHash, getLastTag, getLastTags, getRepoName, pullRequest, pull, push, reset, stash, isStatusClean, tag };
+export { branch, commit, clean, clone, checkout, deleteTag, getBranchName, getDefaultBranch, getIssue, getIssues, getLastCommit, getLastCommitMsg, getLastCommitHash, getLastTag, getLastTags, getRepoName, pullRequest, pull, push, pushTags, reset, stash, isStatusClean, tag };

@@ -6,11 +6,12 @@
  * @access public
  * @since 1.0.0
  * @typedef {Object} git - git
+ * @property {Function} branch - Creates a branch.
  * @property {Function} commit - Git commits to current branch.
  * @property {Function} clean - Cleans/Discards all changes to current branch.
  * @property {Function} clone - Clones a repo.
  * @property {Function} checkout - Checksout a branch and pulls latest.
- * @property {Function} branch - Creates a branch.
+ * @property {Function} deleteTag - Deletes a tag remotely and locally.
  * @property {Function} getBranchName - Gets the name of the current branch.
  * @property {Function} getDefaultBranch - Gets the name of the default branch.
  * @property {Function} getIssue - Gets issue from repo.
@@ -24,16 +25,18 @@
  * @property {Function} pullRequest - Creates a PR.
  * @property {Function} pull - Pulls latest.
  * @property {Function} push - Push commits to given remote branch.
+ * @property {Function} pushTags - Push tags to given remote branch.
  * @property {Function} reset - Discards all changes to current branch.
  * @property {Function} stash - Stashes all changes of current branch.
  * @property {Function} isStatusClean - Checks if status is clean.
  * @property {Function} tag - Creates a pointer (tag) to current commmit.
  */
+const branch = require('./branch');
 const commit = require('./commit');
 const clean = require('./clean');
 const clone = require('./clone');
 const checkout = require('./checkout');
-const branch = require('./branch');
+const deleteTag = require('./deleteTag');
 const getBranchName = require('./getBranchName');
 const getDefaultBranch = require('./getDefaultBranch');
 const getIssue = require('./getIssue');
@@ -47,17 +50,19 @@ const getRepoName = require('./getRepoName');
 const pullRequest = require('./pullRequest');
 const pull = require('./pull');
 const push = require('./push');
+const pushTags = require('./pushTags');
 const reset = require('./reset');
 const stash = require('./stash');
 const isStatusClean = require('./isStatusClean');
 const tag = require('./tag');
 
 module.exports = {
+    branch,
     commit,
     clean,
     clone,
     checkout,
-    branch,
+    deleteTag,
     getBranchName,
     getDefaultBranch,
     getIssue,
@@ -71,6 +76,7 @@ module.exports = {
     pullRequest,
     pull,
     push,
+    pushTags,
     reset,
     stash,
     isStatusClean,
