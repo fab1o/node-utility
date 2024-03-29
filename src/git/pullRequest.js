@@ -30,7 +30,6 @@ module.exports = function pullRequest(title, description, options) {
         noEdit = false,
         browse = false,
         draft = false,
-        copy = false,
         milestone = '',
         labels = '',
         assign,
