@@ -9,5 +9,5 @@ declare function _exports(title: string, description: string, options: {
     reviewer?: string;
     cwd?: string;
     dryRun?: boolean;
-}): void;
+}): string;
 export = _exports;
