@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const process = require('process');
 
 /**
  * @access public
@@ -7,17 +8,18 @@ const path = require('path');
  * @param {String} source - Source path to copy from
  * @param {String} target - Target path to copy to
  * @param {Object} [options={}]
- * @param {String} [options.cwd='.'] - Current working directory
+ * @param {String} [options.cwd=process.cwd()] - Current working directory
+ * @param {Boolean} [options.skip=false] - Do not resolve path
  * @param {Boolean} [options.overwrite=false] - Overwrite files if possible
  * @desc Copies folders and files from a source path to a target path asynchronously.
- * @returns {Promise<Boolean>} Returns true if source was copied to target or false otherwise
+ * @returns {Promise<{source:String, target:String, copied:Boolean}>}
  * @throws {Error}
  */
 module.exports = function copy(source, target, options) {
-    const { cwd = '.', overwrite = false } = options || {};
+    const { cwd = process.cwd(), skip = false, overwrite = false } = options || {};
 
-    source = path.resolve(path.join(cwd, source));
-    target = path.resolve(path.join(cwd, target));
+    source = skip ? path.resolve(source) : path.resolve(path.join(cwd, source));
+    target = skip ? path.resolve(target) : path.resolve(path.join(cwd, target));
 
     // if source does not exist, nothing to copy
     if (fs.existsSync(source) === false) {
@@ -27,7 +29,7 @@ module.exports = function copy(source, target, options) {
     // if target exists, do not copy unless overwrite is true
     if (fs.existsSync(target)) {
         if (overwrite === false) {
-            return false;
+            return { source, target, copied: false };
         }
     } else {
         fs.mkdirSync(target);
@@ -35,7 +37,7 @@ module.exports = function copy(source, target, options) {
 
     // if they are the same, do not copy unless overwrite is true
     if (source === target && overwrite === false) {
-        return false;
+        return { source, target, copied: false };
     }
 
     return new Promise((resolve, reject) => {
@@ -69,7 +71,7 @@ module.exports = function copy(source, target, options) {
                                             );
                                             break;
                                         case stat.isDirectory():
-                                            copy(srcPath, destPath, options)
+                                            copy(srcPath, destPath, { ...options, skip: true })
                                                 .then(() => innerResolve())
                                                 .catch((err) => innerReject(err));
                                             break;
@@ -101,7 +103,7 @@ module.exports = function copy(source, target, options) {
                         });
                     })
                 )
-                    .then(() => resolve(true))
+                    .then(() => resolve({ source, target, copied: true }))
                     .catch((err) => reject(err));
             }
         });
