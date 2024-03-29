@@ -6,14 +6,18 @@ const path = require('path');
  * @since 1.0.0
  * @param {String} source - Source path to copy from
  * @param {String} target - Target path to copy to
- * @param {Boolean} [overwrite=false] - Overwrite files if possible
+ * @param {Object} [options={}]
+ * @param {String} [options.cwd='.'] - Current working directory
+ * @param {Boolean} [options.overwrite=false] - Overwrite files if possible
  * @desc Copies folders and files from a source path to a target path
  * @returns {Boolean} Returns true if source was copied to target or false otherwise
  * @throws {Error}
  */
-module.exports = function copySync(source, target, overwrite = false) {
-    source = path.resolve(source);
-    target = path.resolve(target);
+module.exports = function copySync(source, target, options) {
+    const { cwd = '.', overwrite = false } = options || {};
+
+    source = path.resolve(path.join(cwd, source));
+    target = path.resolve(path.join(cwd, target));
 
     // if source does not exist, nothing to copy
     if (fs.existsSync(source) === false) {
@@ -44,7 +48,7 @@ module.exports = function copySync(source, target, overwrite = false) {
             fs.symlinkSync(fs.readlinkSync(source), target);
             break;
         case stat.isDirectory():
-            return copyDirSync(source, target, overwrite);
+            return copyDirSync(source, target, options);
         default:
             break;
     }
@@ -52,7 +56,7 @@ module.exports = function copySync(source, target, overwrite = false) {
     return true;
 };
 
-function copyDirSync(source, target, overwrite) {
+function copyDirSync(source, target, options) {
     fs.readdirSync(source).forEach((dir) => {
         const paths = [source, target];
         const [srcPath, destPath] = paths.map((p) => path.join(p, dir));
@@ -67,7 +71,7 @@ function copyDirSync(source, target, overwrite) {
                 fs.symlinkSync(fs.readlinkSync(srcPath), destPath);
                 break;
             case stat.isDirectory():
-                return copyDirSync(srcPath, destPath, overwrite);
+                return copyDirSync(srcPath, destPath, options);
             default:
                 break;
         }

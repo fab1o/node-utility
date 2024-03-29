@@ -1,2 +1,2 @@
-declare function _exports(dir: string): void;
+declare function _exports(dir: string, cwd?: string): void;
 export = _exports;

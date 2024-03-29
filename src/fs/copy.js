@@ -6,14 +6,18 @@ const path = require('path');
  * @since 1.7.0
  * @param {String} source - Source path to copy from
  * @param {String} target - Target path to copy to
- * @param {Boolean} [overwrite=false] - Overwrite files if possible
+ * @param {Object} [options={}]
+ * @param {String} [options.cwd='.'] - Current working directory
+ * @param {Boolean} [options.overwrite=false] - Overwrite files if possible
  * @desc Copies folders and files from a source path to a target path asynchronously.
  * @returns {Promise<Boolean>} Returns true if source was copied to target or false otherwise
  * @throws {Error}
  */
-module.exports = function copy(source, target, overwrite = false) {
-    source = path.resolve(source);
-    target = path.resolve(target);
+module.exports = function copy(source, target, options) {
+    const { cwd = '.', overwrite = false } = options || {};
+
+    source = path.resolve(path.join(cwd, source));
+    target = path.resolve(path.join(cwd, target));
 
     // if source does not exist, nothing to copy
     if (fs.existsSync(source) === false) {
@@ -65,7 +69,7 @@ module.exports = function copy(source, target, overwrite = false) {
                                             );
                                             break;
                                         case stat.isDirectory():
-                                            copy(srcPath, destPath, overwrite)
+                                            copy(srcPath, destPath, options)
                                                 .then(() => innerResolve())
                                                 .catch((err) => innerReject(err));
                                             break;
