@@ -62,5 +62,8 @@ module.exports = function pullRequest(title, description, options) {
         shellOptions
     );
 
-    return output;
+    // get the last line of the output if there is one
+    const url = output.split('\n').pop();
+
+    return url;
 };
