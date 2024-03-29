@@ -10,6 +10,7 @@ const execSync = require('../shell/execSync');
  * @param {Boolean} [options.noEdit=false] - Use the commit message on the branch as pull request title and description
  * @param {Boolean} [options.browse=false] - Open the new pull request in a web browser
  * @param {Boolean} [options.draft=false] - Create the pull request as a draft
+ * @param {Boolean} [options.copy=false] - Put the URL of the new pull request to clipboard instead of printing it
  * @param {String} [options.milestone=''] - The milestone name to add to this pull request. Passing the milestone number is deprecated
  * @param {String} [options.labels=''] - PR labels separated by comma
  * @param {String} [options.assign] - A comma-separated list (no spaces around the comma) of GitHub handles to assign to this pull request
@@ -29,6 +30,7 @@ module.exports = function pullRequest(title, description, options) {
         noEdit = false,
         browse = false,
         draft = false,
+        copy = false,
         milestone = '',
         labels = '',
         assign,
@@ -46,6 +48,8 @@ module.exports = function pullRequest(title, description, options) {
     const noEditFlag = noEdit ? '--no-edit' : '';
     const browseFlag = browse ? '--browse' : '';
     const draftFlag = draft ? '--draft' : '';
+    const copyFlag = copy ? `--copy` : '';
+
     const assignFlag = assign ? `--assign ${assign}` : '';
     const reviewerFlag = reviewer ? `--reviewer ${reviewer}` : '';
 
@@ -56,7 +60,7 @@ module.exports = function pullRequest(title, description, options) {
 
     // create the pull request
     execSync(
-        `hub pull-request --push --force --labels '${labels}' --message '${message}' --milestone '${milestone}' --base '${baseBranch}' ${browseFlag} ${noEditFlag} ${draftFlag} ${assignFlag} ${reviewerFlag}`,
+        `hub pull-request --push --force --labels '${labels}' --message '${message}' --milestone '${milestone}' --base '${baseBranch}' ${browseFlag} ${noEditFlag} ${draftFlag} ${assignFlag} ${reviewerFlag} ${copyFlag}`,
         shellOptions
     );
 };
