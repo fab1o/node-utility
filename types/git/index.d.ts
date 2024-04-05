@@ -67,7 +67,7 @@ export type git = {
      */
     getRepoName: Function;
     /**
-     * - Gets the PR Url if exists, otherwise null.
+     * - Gets an Url if there is a PR for current branch and the PS is open, otherwise null.
      */
     getPullRequestUrl: Function;
     /**

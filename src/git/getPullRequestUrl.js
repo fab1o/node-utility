@@ -6,7 +6,7 @@ const execSync = require('../shell/execSync');
  * @param {Object} options
  * @param {String} [options.cwd]
  * @param {Boolean} [options.dryRun]
- * @desc Gets the PR Url if exists, otherwise null
+ * @desc Gets an Url if there is a PR for current branch and the PS is open, otherwise null
  * @returns {String|null}
  */
 module.exports = function getPullRequestUrl(options) {

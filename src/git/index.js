@@ -22,7 +22,7 @@
  * @property {Function} getLastTag - Gets the last tag.
  * @property {Function} getLastTags - Gets the last tags.
  * @property {Function} getRepoName - Gets the repository name.
- * @property {Function} getPullRequestUrl - Gets the PR Url if exists, otherwise null.
+ * @property {Function} getPullRequestUrl - Gets an Url if there is a PR for current branch and the PS is open, otherwise null.
  * @property {Function} pullRequest - Creates a PR.
  * @property {Function} pull - Pulls latest.
  * @property {Function} push - Push commits to given remote branch.
