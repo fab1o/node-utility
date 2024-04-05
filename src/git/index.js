@@ -22,6 +22,7 @@
  * @property {Function} getLastTag - Gets the last tag.
  * @property {Function} getLastTags - Gets the last tags.
  * @property {Function} getRepoName - Gets the repository name.
+ * @property {Function} getPullRequestUrl - Gets the PR Url if exists, otherwise null.
  * @property {Function} pullRequest - Creates a PR.
  * @property {Function} pull - Pulls latest.
  * @property {Function} push - Push commits to given remote branch.
@@ -47,6 +48,7 @@ const getLastCommitMsg = require('./getLastCommitMsg');
 const getLastTag = require('./getLastTag');
 const getLastTags = require('./getLastTags');
 const getRepoName = require('./getRepoName');
+const getPullRequestUrl = require('./getPullRequestUrl');
 const pullRequest = require('./pullRequest');
 const pull = require('./pull');
 const push = require('./push');
@@ -73,6 +75,7 @@ module.exports = {
     getLastTag,
     getLastTags,
     getRepoName,
+    getPullRequestUrl,
     pullRequest,
     pull,
     push,
