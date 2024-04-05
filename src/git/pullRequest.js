@@ -17,7 +17,6 @@ const execSync = require('../shell/execSync');
  * @param {String} [options.cwd]
  * @param {Boolean} [options.dryRun]
  * @desc Creates a PR
- * @returns {String} The URL of the new pull request
  * @throws {Error} If it does not create a PR
  */
 module.exports = function pullRequest(title, description, options) {
@@ -56,13 +55,8 @@ module.exports = function pullRequest(title, description, options) {
         dryRun
     };
 
-    const output = execSync(
+    execSync(
         `hub pull-request --push --force --labels '${labels}' --message '${message}' --milestone '${milestone}' --base '${baseBranch}' ${browseFlag} ${noEditFlag} ${draftFlag} ${assignFlag} ${reviewerFlag}`,
         shellOptions
     );
-
-    // get the last line of the output if there is one
-    const url = output.split('\n').pop();
-
-    return url;
 };

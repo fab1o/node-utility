@@ -67,6 +67,10 @@ export type git = {
      */
     getRepoName: Function;
     /**
+     * - Gets the PR Url if exists, otherwise null.
+     */
+    getPullRequestUrl: Function;
+    /**
      * - Creates a PR.
      */
     pullRequest: Function;
@@ -115,6 +119,7 @@ import getLastCommitHash = require("./getLastCommitHash");
 import getLastTag = require("./getLastTag");
 import getLastTags = require("./getLastTags");
 import getRepoName = require("./getRepoName");
+import getPullRequestUrl = require("./getPullRequestUrl");
 import pullRequest = require("./pullRequest");
 import pull = require("./pull");
 import push = require("./push");
@@ -123,4 +128,4 @@ import reset = require("./reset");
 import stash = require("./stash");
 import isStatusClean = require("./isStatusClean");
 import tag = require("./tag");
-export { branch, commit, clean, clone, checkout, deleteTag, getBranchName, getDefaultBranch, getIssue, getIssues, getLastCommit, getLastCommitMsg, getLastCommitHash, getLastTag, getLastTags, getRepoName, pullRequest, pull, push, pushTags, reset, stash, isStatusClean, tag };
+export { branch, commit, clean, clone, checkout, deleteTag, getBranchName, getDefaultBranch, getIssue, getIssues, getLastCommit, getLastCommitMsg, getLastCommitHash, getLastTag, getLastTags, getRepoName, getPullRequestUrl, pullRequest, pull, push, pushTags, reset, stash, isStatusClean, tag };

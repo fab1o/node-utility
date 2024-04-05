@@ -68,6 +68,7 @@ git
 | getLastTag        | <code>function</code> | Gets the last tag.                             |
 | getLastTags       | <code>function</code> | Gets the last tags.                            |
 | getRepoName       | <code>function</code> | Gets the repository name.                      |
+| getPullRequestUrl | <code>function</code> | Gets the PR Url if exists, otherwise null.     |
 | pullRequest       | <code>function</code> | Creates a PR.                                  |
 | pull              | <code>function</code> | Pulls latest.                                  |
 | push              | <code>function</code> | Push commits to given remote branch.           |
