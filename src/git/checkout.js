@@ -19,7 +19,7 @@ module.exports = function checkout(branchName, options) {
         execSync(`git checkout ${branchName}`, options);
     } catch (ex) {}
 
-    const currentBranch = getBranchName(cwd);
+    const currentBranch = getBranchName(options);
 
     return currentBranch === branchName || dryRun;
 };
