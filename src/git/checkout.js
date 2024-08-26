@@ -12,7 +12,7 @@ const getBranchName = require('./getBranchName');
  * @returns {Boolean}
  */
 module.exports = function checkout(branchName, options) {
-    const { cwd, dryRun = false } = options || {};
+    const { dryRun = false } = options || {};
 
     try {
         // checkout branch
