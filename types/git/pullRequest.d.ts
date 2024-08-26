@@ -1,5 +1,6 @@
 declare function _exports(title: string, description: string, options: {
     baseBranch: string;
+    branchName: string;
     noEdit?: boolean;
     browse?: boolean;
     draft?: boolean;

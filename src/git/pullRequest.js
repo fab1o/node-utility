@@ -7,6 +7,7 @@ const execSync = require('../shell/execSync');
  * @param {String} description - PR description
  * @param {Object} options
  * @param {String} options.baseBranch - PR base branch
+ * @param {String} options.branchName - The PR Branch
  * @param {Boolean} [options.noEdit=false] - Use the commit message on the branch as pull request title and description
  * @param {Boolean} [options.browse=false] - Open the new pull request in a web browser
  * @param {Boolean} [options.draft=false] - Create the pull request as a draft
@@ -16,7 +17,7 @@ const execSync = require('../shell/execSync');
  * @param {String} [options.reviewer] - A comma-separated list (no spaces around the comma) of GitHub handles to request a review from
  * @param {String} [options.cwd]
  * @param {Boolean} [options.dryRun]
- * @desc Creates a PR
+ * @desc Opens a new PR, or just opens the PR if it already exists (given the branchName).
  * @throws {Error} If it does not create a PR
  */
 module.exports = function pullRequest(title, description, options) {
@@ -26,6 +27,7 @@ module.exports = function pullRequest(title, description, options) {
 
     const {
         baseBranch,
+        branchName,
         noEdit = false,
         browse = false,
         draft = false,
@@ -41,6 +43,26 @@ module.exports = function pullRequest(title, description, options) {
         throw new Error('pullRequest() options.baseBranch is required');
     }
 
+    if (!branchName) {
+        throw new Error('pullRequest() options.branchName is required');
+    }
+
+    const shellOptions = {
+        cwd,
+        dryRun
+    };
+
+    const prNumber = execSync(`hub pr list --head '${branchName}' %I%n`, shellOptions).replace(
+        /[\r\n]+/g,
+        ''
+    );
+
+    if (prNumber) {
+        execSync(`hub pr show ${prNumber}`, shellOptions);
+
+        return;
+    }
+
     const message = `${title}\n\n${description}`;
 
     const noEditFlag = noEdit ? '--no-edit' : '';
@@ -49,11 +71,6 @@ module.exports = function pullRequest(title, description, options) {
 
     const assignFlag = assign ? `--assign ${assign}` : '';
     const reviewerFlag = reviewer ? `--reviewer ${reviewer}` : '';
-
-    const shellOptions = {
-        cwd,
-        dryRun
-    };
 
     execSync(
         `hub pull-request --push --force --labels '${labels}' --message '${message}' --milestone '${milestone}' --base '${baseBranch}' ${browseFlag} ${noEditFlag} ${draftFlag} ${assignFlag} ${reviewerFlag}`,
