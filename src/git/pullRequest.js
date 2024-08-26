@@ -9,7 +9,7 @@ const execSync = require('../shell/execSync');
  * @param {String} options.baseBranch - PR base branch
  * @param {String} options.branchName - The PR Branch
  * @param {Boolean} [options.noEdit=false] - Use the commit message on the branch as pull request title and description
- * @param {Boolean} [options.browse=false] - Open the new pull request in a web browser
+ * @param {Boolean} [options.browse=false] - Open the pull request in a web browser
  * @param {Boolean} [options.draft=false] - Create the pull request as a draft
  * @param {String} [options.milestone=''] - The milestone name to add to this pull request. Passing the milestone number is deprecated
  * @param {String} [options.labels=''] - PR labels separated by comma
@@ -57,7 +57,7 @@ module.exports = function pullRequest(title, description, options) {
         ''
     );
 
-    if (prNumber) {
+    if (prNumber && browse) {
         execSync(`hub pr show ${prNumber}`, shellOptions);
 
         return;
