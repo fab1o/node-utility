@@ -57,8 +57,10 @@ module.exports = function pullRequest(title, description, options) {
         ''
     );
 
-    if (prNumber && browse) {
-        execSync(`hub pr show ${prNumber}`, shellOptions);
+    if (prNumber) {
+        if (browse) {
+            execSync(`hub pr show ${prNumber}`, shellOptions);
+        }
 
         return;
     }
