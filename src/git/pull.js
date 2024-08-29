@@ -2,6 +2,7 @@ const execSync = require('../shell/execSync');
 
 /**
  * @access public
+ * @since 1.0.0
  * @param {Object} [options]
  * @param {Boolean} [options.prune=false]
  * @param {String} [options.cwd]
