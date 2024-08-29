@@ -71,6 +71,10 @@ export type git = {
      */
     getPullRequestUrl: Function;
     /**
+     * - Merge base branch into current branch.
+     */
+    merge: Function;
+    /**
      * - Creates a PR.
      */
     pullRequest: Function;
@@ -90,6 +94,10 @@ export type git = {
      * - Discards all changes to current branch.
      */
     reset: Function;
+    /**
+     * - Rebase current branch with base branch.
+     */
+    rebase: Function;
     /**
      * - Stashes all changes of current branch.
      */
@@ -120,12 +128,14 @@ import getLastTag = require("./getLastTag");
 import getLastTags = require("./getLastTags");
 import getRepoName = require("./getRepoName");
 import getPullRequestUrl = require("./getPullRequestUrl");
+import merge = require("./merge");
 import pullRequest = require("./pullRequest");
 import pull = require("./pull");
 import push = require("./push");
 import pushTags = require("./pushTags");
 import reset = require("./reset");
+import rebase = require("./rebase");
 import stash = require("./stash");
 import isStatusClean = require("./isStatusClean");
 import tag = require("./tag");
-export { branch, commit, clean, clone, checkout, deleteTag, getBranchName, getDefaultBranch, getIssue, getIssues, getLastCommit, getLastCommitMsg, getLastCommitHash, getLastTag, getLastTags, getRepoName, getPullRequestUrl, pullRequest, pull, push, pushTags, reset, stash, isStatusClean, tag };
+export { branch, commit, clean, clone, checkout, deleteTag, getBranchName, getDefaultBranch, getIssue, getIssues, getLastCommit, getLastCommitMsg, getLastCommitHash, getLastTag, getLastTags, getRepoName, getPullRequestUrl, merge, pullRequest, pull, push, pushTags, reset, rebase, stash, isStatusClean, tag };

@@ -69,11 +69,13 @@ git
 | getLastTags       | <code>function</code> | Gets the last tags.                                                                 |
 | getRepoName       | <code>function</code> | Gets the repository name.                                                           |
 | getPullRequestUrl | <code>function</code> | Gets an Url if there is a PR for current branch and the PS is open, otherwise null. |
+| merge             | <code>function</code> | Merge base branch into current branch.                                              |
 | pullRequest       | <code>function</code> | Creates a PR.                                                                       |
 | pull              | <code>function</code> | Pulls latest.                                                                       |
 | push              | <code>function</code> | Push commits to given remote branch.                                                |
 | pushTags          | <code>function</code> | Push tags to given remote branch.                                                   |
 | reset             | <code>function</code> | Discards all changes to current branch.                                             |
+| rebase            | <code>function</code> | Rebase current branch with base branch.                                             |
 | stash             | <code>function</code> | Stashes all changes of current branch.                                              |
 | isStatusClean     | <code>function</code> | Checks if status is clean.                                                          |
 | tag               | <code>function</code> | Creates a pointer (tag) to current commmit.                                         |
